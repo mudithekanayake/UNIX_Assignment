@@ -2,7 +2,7 @@
 
 ## Data Inspection
 
-### Attributes of `fang_et_al_genotypes`
+### Attributes of `fang_et_al_genotypes.txt`
 
 To get the file sizes
 ```
