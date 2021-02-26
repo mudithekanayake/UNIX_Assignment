@@ -1,33 +1,39 @@
-#BCB546 - UNIX Assignment - Mudith Ekanayake
+# BCB546 - UNIX Assignment - Mudith Ekanayake
 
-##Data Inspection
+## Data Inspection
 
-###Attributes of `fang_et_al_genotypes`
+### Attributes of `fang_et_al_genotypes`
 
 To get the file sizes
 ```
 ls -lh
 ```
+
 To see the first line of the file for understanding the formatting of the file
 ```
 head -n 1 fang_et_al_genotypes.txt
 ```
+
 End of the files were inspected by tail.
 ```
 tail -n 3 fang_et_al_genotypes.txt
 ```
+
 less was used to view the file.
 ```
 less fang_et_al_genotypes.txt
 ```
+
 To get only the number of lines in the file
 ```
 wc -l fang_et_al_genotypes.txt
 ```
+
 To get the number of lines as well as number of words and number of bytes in the file
 ```
 wc fang_et_al_genotypes.txt
 ```
+
 To get the number of columns
 ```
 awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
@@ -40,7 +46,7 @@ By inspecting this file I learned that:
 * Number of columns: 986
 
 
-###Attributes of `snp_position.txt`
+### Attributes of `snp_position.txt`
 
 ```
 ls -lh
@@ -59,7 +65,7 @@ By inspecting this file I learned that:
 * Number of columns: 15
 
 
-##Data Processing
+## Data Processing
 
 
 ```
@@ -74,7 +80,7 @@ awk 'BEGIN {FS="\t"; OFS="\t"} {print $1, $3, $4, $2, $5,$6,$7,$8,$9,$10,$11,$12
 Columns in the `snp_sorted.txt` file was rearranged using `awk` and `snp_sorted_col.txt` file was created.
 
 
-##Data Processing for Maize
+## Data Processing for Maize
 
 
 ```
@@ -102,7 +108,7 @@ Two sorted files `snp_sorted_col.txt` and `maize_sorted.txt` were joined using `
 
 
 
-###10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by the symbol '?'
+### 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by the symbol '?'
 
 
 ```
@@ -111,7 +117,7 @@ head -n 1 maize_joined.txt | awk 'BEGIN {FS="\t"; OFS="\t"}{ for (i=1; i <= 10; 
 For each chromosome 10 files were created numbering from 1 to 10 and data for SNPs ordered based on increasing position values and missing data encoded by the symbol `?` were appended into the created files.
 
 
-###10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by the symbol '-'
+### 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by the symbol '-'
 
 
 ```
@@ -120,7 +126,7 @@ head -n 1 maize_joined.txt | awk 'BEGIN {FS="\t"; OFS="\t"}{ for (i=1; i <= 10; 
 For each chromosome 10 files were created numbering from 1 to 10 and data for SNPs ordered based on decreasing position values and missing data encoded by the symbol `-` were appended into the created files.
 
 
-###All SNPs with unknown positions in the genome
+### All SNPs with unknown positions in the genome
 
 
 ```
@@ -129,7 +135,7 @@ head -n 1 maize_joined.txt > maize_chr_unknown_positions.txt | tail -n +2 maize_
 A file called `maize_chr_unknown_positions.txt` was created with headers from `maize_joined.txt` and appended all the data with unknown positions into the file.
 
 
-###All SNPs with multiple positions in the genome
+### All SNPs with multiple positions in the genome
 
 
 ```
@@ -139,7 +145,7 @@ A file called `maize_chr_multi_positions.txt` was created with headers from `mai
 
 
 
-##Data Processing for teosinte
+## Data Processing for teosinte
 
 
 ```
@@ -167,7 +173,7 @@ Two sorted files `snp_sorted_col.txt` and `teosinte_sorted.txt` were joined usin
 
 
 
-###10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol '?'
+### 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol '?'
 
 
 ```
@@ -176,7 +182,7 @@ head -n 1 teosinte_joined.txt | awk 'BEGIN {FS="\t"; OFS="\t"}{ for (i=1; i <= 1
 For each chromosome 10 files were created numbering from 1 to 10 and data for SNPs ordered based on increasing position values and missing data encoded by the symbol `?` were appended into the created files.
 
 
-###10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol '-'
+### 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol '-'
 
 
 ```
@@ -185,7 +191,7 @@ head -n 1 teosinte_joined.txt | awk 'BEGIN {FS="\t"; OFS="\t"}{ for (i=1; i <= 1
 For each chromosome 10 files were created numbering from 1 to 10 and data for SNPs ordered based on decreasing position values and missing data encoded by the symbol `-` were appended into the created files.
 
 
-###All SNPs with unknown positions in the genome
+### All SNPs with unknown positions in the genome
 
 
 ```
@@ -194,7 +200,7 @@ head -n 1 teosinte_joined.txt > teosinte_chr_unknown_positions.txt | tail -n +2 
 A file called `teosinte_chr_unknown_positions.txt` was created with headers from `teosinte_joined.txt` and appended all the data with unknown positions into the file.
 
 
-###All SNPs with multiple positions in the genome
+### All SNPs with multiple positions in the genome
 
 
 ```
@@ -203,6 +209,6 @@ head -n 1 teosinte_joined.txt > teosinte_chr_multi_positions.txt | tail -n +2 te
 A file called `teosinte_chr_multi_positions.txt` was created with headers from `teosinte_joined.txt` and appended all the data with multiple positions into the file.
 
 
-##Finalizing
+## Finalizing
 
 Two directories were created using `mkdir` command and all the intermediate files were added to the "intermediate_files" directory and all the generated maize and teosinte files were added to the "output_files" directory creating two directories for each type.
