@@ -201,3 +201,8 @@ A file called `teosinte_chr_unknown_positions.txt` was created with headers from
 head -n 1 teosinte_joined.txt > teosinte_chr_multi_positions.txt | tail -n +2 teosinte_joined.txt | awk 'BEGIN {FS="\t"; OFS="\t"}{ if($2 == "multiple") {print >> "teosinte_chr_multi_positions.txt"}}'
 ```
 A file called `teosinte_chr_multi_positions.txt` was created with headers from `teosinte_joined.txt` and appended all the data with multiple positions into the file.
+
+
+##Finalizing
+
+Two directories were created using `mkdir` command and all the intermediate files were added to the "intermediate_files" directory and all the generated maize and teosinte files were added to the "output_files" directory creating two directories for each type.
